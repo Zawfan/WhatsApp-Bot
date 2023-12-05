@@ -2,6 +2,7 @@
 const Collection = require("./lib/collection.js");
 const { Message, readPlungins } = require("./handler/message");
 const { Client, serialize } = require("./lib/serialize");
+const Function = require("./lib/function");
 
 const config = require("../config");
 
@@ -151,14 +152,11 @@ connectToWhatsApp()
 let choki = chokidar.watch([config.options.pathPlugins], { persistent: true })
 
 choki 
-  .on("change", async (Path) => { 
-    console.log(`Changed ${Path}`); 
-    delete require.cache[require.resolve("../" + Path)];
-    const module = require("../" + Path)
-    global.plugins.set(Path, module)
+  .on("change", async (Path) => {
+    console.log(`Changed ${Path}?update=${Date.now() + 1}`);
+	await Function.reloadDir(Path, global.plugins)
   }) 
   .on("add", async function (Path) {
-  	delete require.cache[require.resolve("../" + Path)];
-  	const module = require("../" + Path)
-  	await global.plugins.set(Path, module)
+    await Function.reloadDir(Path, global.plugins)
   });
+  

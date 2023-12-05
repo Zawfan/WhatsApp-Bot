@@ -273,13 +273,14 @@ module.exports = new (class Function {
     });
   }
 
-  async reloadDir(Path, commands = global.commands) {
-    if (new RegExp(set.opt.pathCommand, "i").test(Path)) {
-      const command = await import(`${Path}?update=${Date.now()}`);
-      commands.set(command?.default?.name, command);
-    } else {
-      await import(`${Path}?update=${Date.now()}`);
-    }
+  async reloadDir(Path, plugins = global.plugins) {
+  	const pathComponents = Path.split("/");
+  	const fileName = pathComponents[pathComponents.length - 1];
+  	const cleanedFileName = fileName.replace(/\d+$/, "");
+  	const cleanedPath = Path.replace(fileName, cleanedFileName);
+  	const module = require("../../" + cleanedPath)
+  	delete require.cache[require.resolve("../../" + cleanedPath)];
+  	plugins.set(cleanedPath, module) 
   }
 
   mime(name) {
