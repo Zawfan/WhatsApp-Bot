@@ -11,6 +11,15 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util"); 
 const moment = require("moment-timezone");
+const Database = require("../lib/localdb")
+
+const dbPath = "system/temp/database.json"
+const database = new Database(dbPath)
+
+database.connect().catch(() => database.connect());
+setInterval(async () => {
+	fs.writeFileSync(dbPath, JSON.stringify(global.db, null, 3));
+}, 3 * 1000);
 
 module.exports.Message = async (conn, m, store) => {
 	try {
@@ -21,6 +30,7 @@ module.exports.Message = async (conn, m, store) => {
 		const quoted = m.quoted ? m.quoted : m;
 		
 		if (m) {
+			require("../lib/database").idb(m);
 			console.log("Command : " + m.body)
 		}
 		 
@@ -117,3 +127,5 @@ module.exports.readPlungins = async (pathname = config.options.pathPlugins) => {
 		console.error(e);
 	}
 }
+
+config.reloadFile(require.resolve(__filename))
