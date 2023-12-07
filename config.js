@@ -14,7 +14,7 @@ module.exports = {
       pathPlugins: "plugins"
    },
    
-   // Function Maybe 
+   // Function Maybee
    reloadFile: (path) => reloadFile(path),
    
    // Rest APIs Cuy
