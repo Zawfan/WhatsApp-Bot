@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const { fileTypeFromBuffer } = require("file-type");
+const { fromBuffer } = require("file-type");
 const path = require("path");
 const { fileURLToPath, pathToFileURL } = require("url");
 const { platform } = require("os");
@@ -198,7 +198,7 @@ module.exports = new (class Function {
           let mime =
             mimes.lookup(name) ||
             data.headers.get("content-type") ||
-            (await fileTypeFromBuffer(buffer))?.mime;
+            (await fromBuffer(buffer))?.mime;
           resolve({
             data: buffer,
             size: Buffer.byteLength(buffer),
@@ -214,7 +214,7 @@ module.exports = new (class Function {
             data,
             size,
             sizeH: this.formatSize(size),
-            ...((await fileTypeFromBuffer(data)) || {
+            ...((await fromBuffer(data)) || {
               mime: "application/octet-stream",
               ext: ".bin",
             }),
@@ -226,7 +226,7 @@ module.exports = new (class Function {
             data,
             size,
             sizeH: this.formatSize(size),
-            ...((await fileTypeFromBuffer(data)) || {
+            ...((await fromBuffer(data)) || {
               mime: "application/octet-stream",
               ext: ".bin",
             }),
@@ -237,7 +237,7 @@ module.exports = new (class Function {
             data: string,
             size,
             sizeH: this.formatSize(size),
-            ...((await fileTypeFromBuffer(string)) || {
+            ...((await fromBuffer(string)) || {
               mime: "application/octet-stream",
               ext: ".bin",
             }),
@@ -249,7 +249,7 @@ module.exports = new (class Function {
             data,
             size,
             sizeH: this.formatSize(size),
-            ...((await fileTypeFromBuffer(data)) || {
+            ...((await fromBuffer(data)) || {
               mime: "application/octet-stream",
               ext: ".bin",
             }),
@@ -261,7 +261,7 @@ module.exports = new (class Function {
             data: buffer,
             size,
             sizeH: this.formatSize(size),
-            ...((await fileTypeFromBuffer(buffer)) || {
+            ...((await fromBuffer(buffer)) || {
               mime: "application/octet-stream",
               ext: ".bin",
             }),

@@ -5,6 +5,7 @@ const baileys = require('@whiskeysockets/baileys');
 const Jimp = require('jimp');
 const { parsePhoneNumber } = require('libphonenumber-js');
 const Crypto = require('crypto');
+const { fromBuffer } = require("file-type");
 
 const config = require("../../config");
 const Function = require("./function");

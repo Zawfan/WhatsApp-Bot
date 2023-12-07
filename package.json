@@ -1,23 +1,27 @@
 {
-  "name": "base",
+  "name": "SkyBot",
   "version": "1.0.0",
   "description": "Simple Base Source Code Bot WhatsApp.",
-  "main": "index.js",
+  "main": "system/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node system/index.js",
+    "neat": "npx prettier --write ."
   },
   "keywords": [
     "api",
-    "wa"
+    "wa",
+    "Whatsapp", 
+    "bot"
   ],
   "author": "ArifzynXD",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "^6.5.0",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "chokidar": "^3.5.3",
+    "crypto-js": "^4.2.0",
     "jimp": "^0.16.13",
     "moment-timezone": "^0.5.43",
     "node-cache": "^5.1.2",

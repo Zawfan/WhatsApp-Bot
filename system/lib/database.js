@@ -173,8 +173,8 @@ async function idb(m) {
   }
 
   if (m.isGroup) {
-    let group = global.db.groups[m.from];
-    if (typeof group !== "object") global.db.groups[m.from] = {};
+    let group = global.db.chats[m.from];
+    if (typeof group !== "object") global.db.chats[m.from] = {};
     if (group) {
       if (!isBoolean(group.mute)) group.mute = false;
       if (!isNumber(group.lastChat)) group.lastChat = new Date() * 1;
@@ -184,7 +184,7 @@ async function idb(m) {
       if (!isBoolean(group.banned)) group.banned = false;
       if (!isBoolean(group.chatAi)) group.chatAi = false;
     } else {
-      global.db.groups[m.from] = {
+      global.db.chats[m.from] = {
         lastChat: new Date() * 1,
         mute: false,
         welcome: true,

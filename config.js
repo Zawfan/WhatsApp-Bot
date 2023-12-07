@@ -17,12 +17,21 @@ module.exports = {
    // Function Maybe 
    reloadFile: (path) => reloadFile(path),
    
+   // Rest APIs Cuy
+   APIs: {
+   	arifzyn: "https://api.arifzyn.biz.id"
+   },
+   
+   APIKeys: {
+   	"https://api.arifzyn.biz.id": process.env.APIKEY || "AR-yZVUr8c8DTre"
+   },
+   
    // Set pack name sticker on here
    Exif: {
       packId: "https://api.arifzyn.biz.id",
       packName: `Sticker Ini Dibuat Oleh :`,
       packPublish: "Arifzyn.",
-      packEmail: "okeae2410@gmail.com",
+      packEmail: "arifzyn906@gmail.com",
       packWebsite: "https://api.arifzyn.biz.id",
       androidApp: "https://play.google.com/store/apps/details?id=com.bitsmedia.android.muslimpro",
       iOSApp: "https://apps.apple.com/id/app/muslim-pro-al-quran-adzan/id388389451?|=id",
