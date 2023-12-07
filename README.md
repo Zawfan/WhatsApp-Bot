@@ -21,7 +21,7 @@ npm start
 ```
 use pairing code
 ```bash
-node index.js --pairing
+node system/index.js --pairing
 ```
 
 #### If npm install failed, try using yarn instead of npm
