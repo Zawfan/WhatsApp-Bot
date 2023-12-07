@@ -23,7 +23,7 @@ module.exports = {
    },
    
    APIKeys: {
-   	"https://api.arifzyn.biz.id": process.env.APIKEY || "AR-yZVUr8c8DTre"
+   	"https://api.arifzyn.biz.id": process.env.APIKEY || ""
    },
    
    // Set pack name sticker on here
